@@ -1,0 +1,1014 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyMate - Student Planner</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">🎓</div>
+            <span>Study<span>Mate</span></span>
+        </div>
+
+        <nav>
+            <button class="nav-item active" data-page="dashboard">
+                <span>⌂</span> Dashboard
+            </button>
+
+            <button class="nav-item" data-page="schedule">
+                <span>◫</span> My Schedule
+            </button>
+
+            <button class="nav-item" data-page="classes">
+                <span>▣</span> Classes
+            </button>
+
+            <button class="nav-item" data-page="study">
+                <span>📚</span> Study Plan
+            </button>
+
+            <button class="nav-item" data-page="tasks">
+                <span>✓</span> Tasks
+            </button>
+
+            <button class="nav-item" data-page="timer">
+                <span>◷</span> Focus Timer
+            </button>
+
+            <button class="nav-item" data-page="reminders">
+                <span>🔔</span> Reminders
+            </button>
+
+            <button class="nav-item" data-page="goals">
+                <span>🎯</span> Goals
+            </button>
+
+            <button class="nav-item" data-page="progress">
+                <span>▥</span> Progress
+            </button>
+
+            <button class="nav-item" data-page="profile">
+                <span>⚙</span> Profile & Settings
+            </button>
+        </nav>
+
+        <div class="sidebar-quote">
+            <div>✦</div>
+            <p>Small steps every day<br>lead to big results!</p>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div class="search">
+                🔍
+                <input type="text" id="searchInput" placeholder="Search anything...">
+            </div>
+
+            <div class="top-actions">
+               
+                <button id="themeBtn">☾</button>
+
+                <div class="profile-mini">
+                    <div class="avatar">A</div>
+                    <div>
+                        <strong>Maryam Mohammadi</strong>
+                        <small>Student</small>
+                    </div>
+                    <span>⌄</span>
+                </div>
+            </div>
+
+        </header>
+
+
+        <!-- ================= DASHBOARD ================= -->
+        <section class="page active" id="dashboard">
+
+            <div class="welcome">
+                <div>
+                    <h1>Good Morning, Maryam 👋</h1>
+                    <p>Stay focused, stay consistent, your goals are closer than you think.</p>
+                </div>
+
+                <div class="date-box">
+                    <small>Today</small>
+                    <strong id="todayDate"></strong>
+                </div>
+            </div>
+
+
+            <!-- STAT CARDS -->
+            <div class="stats">
+
+                <div class="stat-card">
+                    <div class="stat-icon green">✓</div>
+                    <div>
+                        <small>Today's Progress</small>
+                        <h2 id="todayProgress">78%</h2>
+                    </div>
+                    <div class="progress-line">
+                        <i style="width:78%"></i>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon blue">◷</div>
+                    <div>
+                        <small>Study Hours</small>
+                   <h2><span id="studyHours">4.5</span> / 6 hrs</h2>
+                    </div>
+                    <div class="progress-line">
+                        <i style="width:75%"></i>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon green">✓</div>
+                    <div>
+                        <small>Tasks Completed</small>
+                        <h2><span id="completedTasks">3</span> / 5</h2>
+                    </div>
+                    <div class="progress-line">
+                        <i style="width:60%"></i>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon orange">🔥</div>
+                    <div>
+                        <small>Study Streak</small>
+                        <h2>7 Days</h2>
+                    </div>
+                    <div class="progress-line">
+                        <i style="width:70%"></i>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- DASHBOARD GRID -->
+            <div class="dashboard-grid">
+
+                <!-- TODAY SCHEDULE -->
+                <div class="card schedule-card">
+
+                    <div class="card-header">
+                        <div>
+                            <h3>Today's Schedule</h3>
+                            <small>Your plan for today</small>
+                        </div>
+                        <button class="gold-btn" onclick="openPage('schedule')">
+                            View All
+                        </button>
+                    </div>
+
+                    <div class="timeline">
+
+                        <div class="timeline-item completed">
+                            <span class="time">08:00 - 10:00</span>
+                            <div class="dot"></div>
+                            <div>
+                                <strong>University Class</strong>
+                                <small>Computer Science • Online</small>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item completed">
+                            <span class="time">11:00 - 12:00</span>
+                            <div class="dot"></div>
+                            <div>
+                                <strong>Online Course</strong>
+                                <small>Web Development</small>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <span class="time">13:00 - 14:00</span>
+                            <div class="dot"></div>
+                            <div>
+                                <strong>Lunch & Break</strong>
+                                <small>Personal Time</small>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item active-time">
+                            <span class="time">15:00 - 17:00</span>
+                            <div class="dot"></div>
+                            <div>
+                                <strong>Study Mathematics</strong>
+                                <small>Focus Session</small>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <span class="time">17:30 - 19:00</span>
+                            <div class="dot"></div>
+                            <div>
+                                <strong>Homework & Assignments</strong>
+                                <small>Complete today's tasks</small>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <span class="time">19:00 - 19:30</span>
+                            <div class="dot"></div>
+                            <div>
+                                <strong>Exercise</strong>
+                                <small>Personal Activity</small>
+                           </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <span class="time">22:00</span>
+                            <div class="dot"></div>
+                            <div>
+                                <strong>Sleep</strong>
+                                <small>Rest</small>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!-- CURRENT ACTIVITY -->
+                <div class="card current-card">
+
+                    <div class="card-header">
+                        <div>
+                            <h3>Current Activity</h3>
+                            <small>Focus on your task</small>
+                        </div>
+                    </div>
+
+                    <div class="student-illustration">📖</div>
+
+                    <div class="timer-circle">
+                        <div>
+                            <span id="dashboardTimer">25:00</span>
+                            <small>Focus Time</small>
+                        </div>
+                    </div>
+
+                    <div class="timer-buttons">
+                        <button class="gold-btn" id="dashboardStart">Start</button>
+                        <button class="dark-btn" id="dashboardStop">Stop</button>
+                    </div>
+
+                </div>
+
+
+                <!-- UPCOMING -->
+                <div class="card upcoming-card">
+
+                    <div class="card-header">
+                        <div>
+                            <h3>Upcoming</h3>
+                            <small>What's coming next?</small>
+                        </div>
+                    </div>
+
+                    <div class="upcoming-item">
+                        <span class="small-icon purple">◫</span>
+                        <div>
+                            <strong>Online Course</strong>
+                            <small>11:00 - 12:00</small>
+                        </div>
+                    </div>
+
+                    <div class="upcoming-item">
+                        <span class="small-icon orange">📝</span>
+                        <div>
+                            <strong>Homework</strong>
+                            <small>Due today • 17:30</small>
+                        </div>
+                    </div>
+
+                    <div class="upcoming-item">
+                        <span class="small-icon blue">🎓</span>
+                        <div>
+                            <strong>Class</strong>
+                            <small>Tomorrow • 08:00</small>
+                        </div>
+                    </div>
+
+                    <div class="upcoming-item">
+                        <span class="small-icon green">📊</span>
+                        <div>
+                            <strong>Weekly Review</strong>
+                            <small>Saturday • 20:00</small>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- BOTTOM DASHBOARD -->
+            <div class="bottom-grid">
+
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h3>Weekly Subject Progress</h3>
+                            <small>Track your learning progress</small>
+                        </div>
+                    </div>
+
+                    <div class="subject-progress">
+
+                        <div>
+                            <span>Mathematics</span>
+                            <strong>85%</strong>
+                        </div>
+                        <div class="bar"><i style="width:85%"></i></div>
+
+                        <div>
+                            <span>Physics</span>
+                            <strong>70%</strong>
+                        </div>
+                        <div class="bar"><i style="width:70%"></i></div>
+
+                        <div>
+                            <span>Computer Science</span>
+                       <strong>60%</strong>
+                        </div>
+                        <div class="bar"><i style="width:60%"></i></div>
+
+                        <div>
+                            <span>English</span>
+                            <strong>45%</strong>
+                        </div>
+                        <div class="bar"><i style="width:45%"></i></div>
+
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h3>Recent Activity</h3>
+                            <small>Your latest actions</small>
+                        </div>
+                    </div>
+
+                    <div class="activity">
+                        <span>✓</span>
+                        <div>
+                            <strong>Mathematics study completed</strong>
+                            <small>2 hours ago</small>
+                        </div>
+                    </div>
+
+                    <div class="activity">
+                        <span>📝</span>
+                        <div>
+                            <strong>Homework added</strong>
+                            <small>3 hours ago</small>
+                        </div>
+                    </div>
+
+                    <div class="activity">
+                        <span>🎓</span>
+                        <div>
+                            <strong>Class joined</strong>
+                            <small>5 hours ago</small>
+                        </div>
+                    </div>
+
+                    <div class="activity">
+                        <span>🎯</span>
+                        <div>
+                            <strong>Goal updated</strong>
+                            <small>Today</small>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SCHEDULE ================= -->
+        <section class="page" id="schedule">
+
+            <div class="page-title">
+                <div>
+                    <h1>My Schedule</h1>
+                    <p>Manage your daily, weekly and monthly schedule.</p>
+                </div>
+
+                <button class="gold-btn" onclick="addSchedule()">
+                    + Add Schedule
+                </button>
+            </div>
+
+            <div class="tabs">
+                <button class="tab active">Daily</button>
+                <button class="tab">Weekly</button>
+                <button class="tab">Monthly</button>
+            </div>
+
+            <div class="card">
+
+                <div class="schedule-date">
+                    <button>‹</button>
+                    <h3 id="scheduleDate"></h3>
+                    <button>›</button>
+                </div>
+
+                <div class="full-schedule">
+
+                    <div class="schedule-row completed">
+                        <span>08:00 - 10:00</span>
+                        <b>🎓 University Class</b>
+                        <em>Computer Science</em>
+                        <label>Completed</label>
+                    </div>
+
+                    <div class="schedule-row completed">
+                        <span>11:00 - 12:00</span>
+                        <b>💻 Online Course</b>
+                        <em>Web Development</em>
+                        <label>Completed</label>
+                    </div>
+
+                    <div class="schedule-row">
+                        <span>13:00 - 14:00</span>
+                        <b>🍽️ Lunch & Break</b>
+                        <em>Personal</em>
+                        <label>Completed</label>
+                    </div>
+
+                    <div class="schedule-row active-row">
+                        <span>15:00 - 17:00</span>
+                        <b>📚 Study Mathematics</b>
+                        <em>Study</em>
+                        <label>In Progress</label>
+                    </div>
+
+                    <div class="schedule-row">
+                        <span>17:30 - 19:00</span>
+                      <b>📝 Homework & Assignments</b>
+                        <em>Task</em>
+                        <label>Pending</label>
+                    </div>
+
+                    <div class="schedule-row">
+                        <span>19:00 - 19:30</span>
+                        <b>🏃 Exercise</b>
+                        <em>Personal</em>
+                        <label>Pending</label>
+                    </div>
+
+                    <div class="schedule-row">
+                        <span>22:00</span>
+                        <b>😴 Sleep</b>
+                        <em>Personal</em>
+                        <label>Pending</label>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= CLASSES ================= -->
+        <section class="page" id="classes">
+
+            <div class="page-title">
+                <div>
+                    <h1>Classes</h1>
+                    <p>Manage your university classes and online courses.</p>
+                </div>
+
+                <button class="gold-btn" onclick="addClass()">+ Add Class</button>
+            </div>
+
+            <div class="class-grid">
+
+                <div class="class-card">
+                    <div class="class-icon">💻</div>
+                    <h3>Computer Science</h3>
+                    <p>University Class</p>
+                    <span>08:00 - 10:00</span>
+                    <small>Dr. Ahmad • Online</small>
+                    <label>Ongoing</label>
+                </div>
+
+                <div class="class-card">
+                    <div class="class-icon">🌐</div>
+                    <h3>Web Development</h3>
+                    <p>Online Course</p>
+                    <span>11:00 - 12:00</span>
+                    <small>Prof. John • Online</small>
+                    <label>Ongoing</label>
+                </div>
+
+                <div class="class-card">
+                    <div class="class-icon">⚡</div>
+                    <h3>Physics</h3>
+                    <p>University Class</p>
+                    <span>16:00 - 18:00</span>
+                    <small>Dr. Zia</small>
+                    <label>Upcoming</label>
+                </div>
+
+                <div class="class-card">
+                    <div class="class-icon">📖</div>
+                    <h3>English</h3>
+                    <p>Online Course</p>
+                    <span>19:00 - 20:00</span>
+                    <small>Ms. Farah</small>
+                    <label>Upcoming</label>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= STUDY PLAN ================= -->
+        <section class="page" id="study">
+
+            <div class="page-title">
+                <div>
+                    <h1>Study Plan</h1>
+                    <p>Plan your study time and track your progress.</p>
+                </div>
+
+                <button class="gold-btn" onclick="addStudy()">+ Add Plan</button>
+            </div>
+
+            <div class="card">
+
+                <div class="table">
+
+                    <div class="table-head">
+                        <span>Subject</span>
+                        <span>Study Time</span>
+                        <span>Goal</span>
+                        <span>Progress</span>
+                    </div>
+
+                    <div class="table-row">
+                        <span>📐 Mathematics</span>
+                        <span>2 hours/day</span>
+                        <span>5 hours/week</span>
+                        <div class="mini-progress"><i style="width:85%"></i></div>
+                    </div>
+
+                    <div class="table-row">
+                        <span>⚡ Physics</span>
+                        <span>1.5 hours/day</span>
+                        <span>4 hours/week</span>
+                        <div class="mini-progress"><i style="width:70%"></i></div>
+                    </div>
+
+                    <div class="table-row">
+                        <span>💻 Computer Science</span>
+                        <span>2 hours/day</span>
+                       <span>6 hours/week</span>
+                        <div class="mini-progress"><i style="width:60%"></i></div>
+                    </div>
+
+                    <div class="table-row">
+                        <span>📖 English</span>
+                        <span>1 hour/day</span>
+                        <span>3 hours/week</span>
+                        <div class="mini-progress"><i style="width:45%"></i></div>
+                    </div>
+
+                </div>
+
+                <div class="weekly-goal">
+                    <strong>Weekly Study Goal</strong>
+                    <span>16 / 20 hours</span>
+                    <div class="big-progress">
+                        <i style="width:80%"></i>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- TASKS  -->
+        <section class="page" id="tasks">
+
+            <div class="page-title">
+                <div>
+                    <h1>Tasks & Assignments</h1>
+                    <p>Manage your homework, projects and personal tasks.</p>
+                </div>
+
+                <button class="gold-btn" onclick="addTask()">+ Add Task</button>
+            </div>
+
+            <div class="tabs">
+                <button class="tab active">All</button>
+                <button class="tab">Homework</button>
+                <button class="tab">Projects</button>
+                <button class="tab">Personal</button>
+                <button class="tab">House</button>
+            </div>
+
+            <div class="card">
+
+                <div class="task-row">
+                    <input type="checkbox" checked>
+                    <div>
+                        <strong>Math Homework</strong>
+                        <small>Mathematics</small>
+                    </div>
+                    <span>Apr 25, 2025</span>
+                    <label class="done">Done</label>
+                </div>
+
+                <div class="task-row">
+                    <input type="checkbox">
+                    <div>
+                        <strong>Physics Assignment</strong>
+                        <small>Physics</small>
+                    </div>
+                    <span>Apr 26, 2025</span>
+                    <label class="progress-status">In Progress</label>
+                </div>
+
+                <div class="task-row">
+                    <input type="checkbox">
+                    <div>
+                        <strong>Web Project</strong>
+                        <small>Computer Science</small>
+                    </div>
+                    <span>Apr 28, 2025</span>
+                    <label class="pending">Pending</label>
+                </div>
+
+                <div class="task-row">
+                    <input type="checkbox">
+                    <div>
+                        <strong>Clean Room</strong>
+                        <small>House</small>
+                    </div>
+                    <span>Apr 27, 2025</span>
+                    <label class="pending">Pending</label>
+                </div>
+
+                <div class="task-row">
+                    <input type="checkbox" checked>
+                    <div>
+                        <strong>Buy Groceries</strong>
+                        <small>Personal</small>
+                    </div>
+                    <span>Apr 25, 2025</span>
+                    <label class="done">Done</label>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!--  TIMER  -->
+        <section class="page" id="timer">
+
+            <div class="page-title">
+                <div>
+                    <h1>Focus Timer</h1>
+                    <p>Stay focused and get more done.</p>
+                </div>
+            </div>
+
+            <div class="timer-page">
+
+                <div class="timer-large">
+
+                    <div class="timer-circle large">
+                        <div>
+                            <span id="timerDisplay">25:00</span>
+                            <small>Focus Time</small>
+                   </div>
+                    </div>
+
+                    <div class="timer-buttons">
+                        <button class="gold-btn" id="startTimer">Start</button>
+                        <button class="dark-btn" id="pauseTimer">Pause</button>
+                        <button class="outline-btn" id="resetTimer">Reset</button>
+                    </div>
+
+                </div>
+
+                <div class="timer-settings card">
+
+                    <h3>Timer Settings</h3>
+
+                    <label>Focus Time</label>
+                    <select id="focusLength">
+                        <option value="25">25 minutes</option>
+                        <option value="45">45 minutes</option>
+                        <option value="60">60 minutes</option>
+                    </select>
+
+                    <label>Break Time</label>
+                    <select id="breakLength">
+                        <option>5 minutes</option>
+                        <option>10 minutes</option>
+                        <option>15 minutes</option>
+                    </select>
+
+                    <label>Cycles</label>
+                    <select id="cycleCount">
+                        <option>4</option>
+                        <option>3</option>
+                        <option>2</option>
+                    </select>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!--  REMINDERS  -->
+        <section class="page" id="reminders">
+
+            <div class="page-title">
+                <div>
+                    <h1>Reminders</h1>
+                    <p>Never miss an important task or class.</p>
+                </div>
+
+                <button class="gold-btn" onclick="addReminder()">+ Add Reminder</button>
+            </div>
+
+            <div class="card reminders-list">
+
+                <div class="reminder">
+                    <span>🎓</span>
+                    <div>
+                        <strong>University Class</strong>
+                        <small>Today • 08:00 - 10:00</small>
+                    </div>
+                    <b>Today</b>
+                </div>
+
+                <div class="reminder">
+                    <span>💻</span>
+                    <div>
+                        <strong>Online Course</strong>
+                        <small>Today • 11:00 - 12:00</small>
+                    </div>
+                    <b>Today</b>
+                </div>
+
+                <div class="reminder">
+                    <span>📝</span>
+                    <div>
+                        <strong>Physics Assignment</strong>
+                        <small>Tomorrow • 17:30</small>
+                    </div>
+                    <b>Tomorrow</b>
+                </div>
+
+                <div class="reminder">
+                    <span>🛒</span>
+                    <div>
+                        <strong>Buy Groceries</strong>
+                        <small>Saturday • 12:00</small>
+                    </div>
+                    <b>Saturday</b>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!--  GOALS  -->
+        <section class="page" id="goals">
+
+            <div class="page-title">
+                <div>
+                    <h1>Goals</h1>
+                    <p>Set your goals and track your achievements.</p>
+                </div>
+
+                <button class="gold-btn" onclick="addGoal()">+ Add Goal</button>
+            </div>
+
+            <div class="goal-grid">
+
+                <div class="goal-card">
+                    <span>🎯</span>
+                    <h3>Daily Goal</h3>
+                    <strong>2.5 / 3 hrs</strong>
+                    <div class="big-progress"><i style="width:83%"></i></div>
+                    <small>83% completed</small>
+                </div>
+
+                <div class="goal-card">
+                    <span>📅</span>
+                    <h3>Weekly Goal</h3>
+                    <strong>16 / 20 hrs</strong>
+                    <div class="big-progress"><i style="width:80%"></i></div>
+                  <small>80% completed</small>
+                </div>
+
+                <div class="goal-card">
+                    <span>📆</span>
+                    <h3>Monthly Goal</h3>
+                    <strong>67 / 80 hrs</strong>
+                    <div class="big-progress"><i style="width:84%"></i></div>
+                    <small>84% completed</small>
+                </div>
+
+                <div class="goal-card">
+                    <span>🏆</span>
+                    <h3>Yearly Goal</h3>
+                    <strong>756 / 960 hrs</strong>
+                    <div class="big-progress"><i style="width:79%"></i></div>
+                    <small>79% completed</small>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!--  PROGRESS  -->
+        <section class="page" id="progress">
+
+            <div class="page-title">
+                <div>
+                    <h1>Progress & Statistics</h1>
+                    <p>Track your performance and see your growth.</p>
+                </div>
+            </div>
+
+            <div class="stats">
+
+                <div class="stat-card">
+                    <small>Study Hours</small>
+                    <h2>67 hrs</h2>
+                </div>
+
+                <div class="stat-card">
+                    <small>Tasks Completed</small>
+                    <h2>32 / 38</h2>
+                </div>
+
+                <div class="stat-card">
+                    <small>Avg. Focus</small>
+                    <h2>85%</h2>
+                </div>
+
+                <div class="stat-card">
+                    <small>Study Streak</small>
+                    <h2>12 Days</h2>
+                </div>
+
+            </div>
+
+            <div class="charts-grid">
+
+                <div class="card chart-card">
+                    <h3>Weekly Study Hours</h3>
+                    <canvas id="studyChart"></canvas>
+                </div>
+
+                <div class="card chart-card">
+                    <h3>Overall Progress</h3>
+                    <canvas id="progressChart"></canvas>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!--  PROFILE  -->
+        <section class="page" id="profile">
+
+            <div class="page-title">
+                <div>
+                    <h1>Profile & Settings</h1>
+                    <p>Manage your profile and app settings.</p>
+                </div>
+            </div>
+
+            <div class="profile-grid">
+
+                <div class="card profile-card">
+
+                    <div class="big-avatar">A</div>
+
+                    <h2>Ahmad Rahimi</h2>
+                    <p>Student</p>
+
+                    <div class="profile-info">
+                        <span>Class</span>
+                        <strong>12</strong>
+                    </div>
+
+                    <div class="profile-info">
+                        <span>Field</span>
+                        <strong>Computer Science</strong>
+                    </div>
+
+                    <div class="profile-info">
+                        <span>Academic Year</span>
+                        <strong>2024 - 2025</strong>
+                    </div>
+
+                    <button class="gold-btn" id="editProfileBtn">Edit Profile</button>
+
+                </div>
+
+
+                <div class="card settings-card">
+
+                    <h3>Settings</h3>
+
+                    <div class="setting">
+                        <span>🌙 Dark Mode</span>
+                        <label class="switch">
+                            <input type="checkbox" checked id="darkSwitch">
+                            <span></span>
+                        </label>
+                    </div>
+
+                    <div class="setting">
+                        <span>🔔 Notifications</span>
+                        <label class="switch">
+                            <input type="checkbox" checked id="notificationsSwitch">
+                            <span></span>
+                        </label>
+                    </div>
+
+                    <div class="setting">
+                    <span>🔔 Sound Alerts</span>
+                        <label class="switch">
+                            <input type="checkbox" checked id="soundSwitch">
+                            <span></span>
+                        </label>
+                    </div>
+
+                    <div class="setting">
+                        <span>🌐 Language</span>
+                        <select id="languageSelect">
+                            <option>English</option>
+                            
+                        </select>
+                    </div>
+
+                    <button class="danger-btn" onclick="resetData()">
+                        Reset All Data
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="java.js"></script>
+
+</body>
+</html>
